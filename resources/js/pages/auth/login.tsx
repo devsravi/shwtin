@@ -39,7 +39,7 @@ export default function Login({
             >
                 {({ processing, errors }) => (
                     <>
-                        <Separator>Continue with</Separator>
+                        {/* <Separator>Continue with</Separator> */}
                         <div className="grid gap-6">
                             <div className="grid gap-2">
                                 <Label htmlFor="email">
