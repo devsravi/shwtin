@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import AuthLayout from '@/layouts/auth-layout';
+import { Span } from '@/components/ui/span';
 
 export default function ForgotPassword({ status }: { status?: string }) {
     return (
@@ -30,7 +31,10 @@ export default function ForgotPassword({ status }: { status?: string }) {
                     {({ processing, errors }) => (
                         <>
                             <div className="grid gap-2">
-                                <Label htmlFor="email">Email address</Label>
+                                <Label htmlFor="email">
+                                    Email address
+                                    <Span className="text-red-500 relative -top-1 text-sm">*</Span>
+                                </Label>
                                 <Input
                                     id="email"
                                     type="email"
@@ -45,7 +49,7 @@ export default function ForgotPassword({ status }: { status?: string }) {
 
                             <div className="my-6 flex items-center justify-start">
                                 <Button
-                                    className="w-full"
+                                    className="w-full cursor-pointer"
                                     disabled={processing}
                                     data-test="email-password-reset-link-button"
                                 >
@@ -61,7 +65,7 @@ export default function ForgotPassword({ status }: { status?: string }) {
 
                 <div className="space-x-1 text-center text-sm text-muted-foreground">
                     <span>Or, return to</span>
-                    <TextLink href={login()}>log in</TextLink>
+                    <TextLink href={login()} className="hover:underline hover:text-primary font-semibold">log in</TextLink>
                 </div>
             </div>
         </AuthLayout>

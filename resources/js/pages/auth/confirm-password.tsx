@@ -2,6 +2,8 @@ import InputError from '@/components/input-error';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { PasswordInput } from '@/components/ui/password-input';
+import { Span } from '@/components/ui/span';
 import { Spinner } from '@/components/ui/spinner';
 import AuthLayout from '@/layouts/auth-layout';
 import { store } from '@/routes/password/confirm';
@@ -19,10 +21,12 @@ export default function ConfirmPassword() {
                 {({ processing, errors }) => (
                     <div className="space-y-6">
                         <div className="grid gap-2">
-                            <Label htmlFor="password">Password</Label>
-                            <Input
+                            <Label htmlFor="password">Password
+                                <Span className="text-red-500 relative -top-1 text-sm">*</Span>
+                            </Label>
+                            <PasswordInput
                                 id="password"
-                                type="password"
+                                required
                                 name="password"
                                 placeholder="Password"
                                 autoComplete="current-password"
@@ -34,7 +38,7 @@ export default function ConfirmPassword() {
 
                         <div className="flex items-center">
                             <Button
-                                className="w-full"
+                                className="w-full cursor-pointer"
                                 disabled={processing}
                                 data-test="confirm-password-button"
                             >

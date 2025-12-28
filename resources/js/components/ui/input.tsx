@@ -1,21 +1,49 @@
-import * as React from "react"
+import * as React from 'react';
+import { cn } from '@/lib/utils';
 
-import { cn } from "@/lib/utils"
+function Input({
+    className,
+    type = 'text',
+    ...props
+}: React.ComponentProps<'input'>) {
+    return (
+        <input
+            type={type}
+            data-slot="input"
+            className={cn(
+                /* Base layout */
+                'block w-full h-10 rounded-lg px-3 text-sm appearance-none outline-none',
 
-function Input({ className, type, ...props }: React.ComponentProps<"input">) {
-  return (
-    <input
-      type={type}
-      data-slot="input"
-      className={cn(
-        "border-input file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground flex h-9 w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
-        "focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",
-        "aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
-        className
-      )}
-      {...props}
-    />
-  )
+                /* Colors */
+                'bg-white text-zinc-700 placeholder-zinc-400',
+                'dark:bg-white/10 dark:text-zinc-300 dark:placeholder-zinc-400',
+
+                /* Borders */
+                'border border-zinc-200',
+                'dark:border-white/10',
+
+                /* Focus */
+                'focus-visible:border-ring',
+                'focus-visible:ring-2 focus-visible:ring-ring/40',
+
+                /* Selection */
+                'selection:bg-primary selection:text-primary-foreground',
+
+                /* Disabled */
+                'disabled:cursor-not-allowed disabled:opacity-60',
+                'disabled:bg-zinc-50 dark:disabled:bg-white/[7%]',
+                'disabled:text-zinc-500 dark:disabled:text-zinc-400',
+                'disabled:border-zinc-200 dark:disabled:border-white/5',
+
+                /* Invalid */
+                'aria-invalid:border-destructive',
+                'aria-invalid:ring-2 aria-invalid:ring-destructive/30',
+
+                className
+            )}
+            {...props}
+        />
+    );
 }
 
-export { Input }
+export { Input };

@@ -7,6 +7,8 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Spinner } from '@/components/ui/spinner';
 import AuthLayout from '@/layouts/auth-layout';
+import { Span } from '@/components/ui/span';
+import { PasswordInput } from '@/components/ui/password-input';
 
 interface ResetPasswordProps {
     token: string;
@@ -29,7 +31,10 @@ export default function ResetPassword({ token, email }: ResetPasswordProps) {
                 {({ processing, errors }) => (
                     <div className="grid gap-6">
                         <div className="grid gap-2">
-                            <Label htmlFor="email">Email</Label>
+                            <Label htmlFor="email">
+                                Email
+                                <Span className="text-red-500 relative -top-1 text-sm">*</Span>
+                            </Label>
                             <Input
                                 id="email"
                                 type="email"
@@ -46,13 +51,16 @@ export default function ResetPassword({ token, email }: ResetPasswordProps) {
                         </div>
 
                         <div className="grid gap-2">
-                            <Label htmlFor="password">Password</Label>
-                            <Input
+                            <Label htmlFor="password">
+                                Password
+                                <Span className="text-red-500 relative -top-1 text-sm">*</Span>
+                            </Label>
+                            <PasswordInput
                                 id="password"
-                                type="password"
+                               required
                                 name="password"
                                 autoComplete="new-password"
-                                className="mt-1 block w-full"
+                                className="block w-full"
                                 autoFocus
                                 placeholder="Password"
                             />
@@ -62,13 +70,14 @@ export default function ResetPassword({ token, email }: ResetPasswordProps) {
                         <div className="grid gap-2">
                             <Label htmlFor="password_confirmation">
                                 Confirm password
+                                <Span className="text-red-500 relative -top-1 text-sm">*</Span>
                             </Label>
-                            <Input
+                            <PasswordInput
+                                required
                                 id="password_confirmation"
-                                type="password"
                                 name="password_confirmation"
                                 autoComplete="new-password"
-                                className="mt-1 block w-full"
+                                className="block w-full"
                                 placeholder="Confirm password"
                             />
                             <InputError
@@ -79,7 +88,7 @@ export default function ResetPassword({ token, email }: ResetPasswordProps) {
 
                         <Button
                             type="submit"
-                            className="mt-4 w-full"
+                            className="mt-4 w-full cursor-pointer"
                             disabled={processing}
                             data-test="reset-password-button"
                         >

@@ -9,6 +9,9 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Spinner } from '@/components/ui/spinner';
 import AuthLayout from '@/layouts/auth-layout';
+import { PasswordInput } from '@/components/ui/password-input';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Span } from '@/components/ui/span';
 
 export default function Register() {
     return (
@@ -27,7 +30,10 @@ export default function Register() {
                     <>
                         <div className="grid gap-6">
                             <div className="grid gap-2">
-                                <Label htmlFor="name">Name</Label>
+                                <Label htmlFor="name">
+                                    Name
+                                    <Span className="text-red-500 relative -top-1 text-sm">*</Span>
+                                </Label>
                                 <Input
                                     id="name"
                                     type="text"
@@ -45,7 +51,9 @@ export default function Register() {
                             </div>
 
                             <div className="grid gap-2">
-                                <Label htmlFor="email">Email address</Label>
+                                <Label htmlFor="email">Email address
+                                    <Span className="text-red-500 relative -top-1 text-sm">*</Span>
+                                </Label>
                                 <Input
                                     id="email"
                                     type="email"
@@ -59,10 +67,11 @@ export default function Register() {
                             </div>
 
                             <div className="grid gap-2">
-                                <Label htmlFor="password">Password</Label>
-                                <Input
+                                <Label htmlFor="password">Password
+                                    <Span className="text-red-500 relative -top-1 text-sm">*</Span>
+                                </Label>
+                                <PasswordInput
                                     id="password"
-                                    type="password"
                                     required
                                     tabIndex={3}
                                     autoComplete="new-password"
@@ -75,10 +84,10 @@ export default function Register() {
                             <div className="grid gap-2">
                                 <Label htmlFor="password_confirmation">
                                     Confirm password
+                                    <Span className="text-red-500 relative -top-1 text-sm">*</Span>
                                 </Label>
-                                <Input
+                                <PasswordInput
                                     id="password_confirmation"
-                                    type="password"
                                     required
                                     tabIndex={4}
                                     autoComplete="new-password"
@@ -89,10 +98,33 @@ export default function Register() {
                                     message={errors.password_confirmation}
                                 />
                             </div>
+                            <div className="flex items-center space-x-3">
+                                <Checkbox
+                                    required
+                                    id="tnc"
+                                    name="tnc"
+                                    tabIndex={3}
+                                    className=" border-zinc-300 dark:border-white/10 text-accent focus:ring-accent"
+                                />
+                                <Label htmlFor="tnc">I agree to the Terms of Services. & Privacy Policy. 
+                                    <Span className="text-red-500 relative -top-1 text-sm">*</Span>
+                                </Label>
+                                <InputError message={errors.tnc} />
+                            </div>
+                            <div className="flex items-center space-x-3">
+                                <Checkbox
+                                    id="send_updates"
+                                    name="send_updates"
+                                    tabIndex={3}
+                                    className=" border-zinc-300 dark:border-white/10 text-accent focus:ring-accent"
+                                />
+                                <Label htmlFor="send_updates">Send me updates about articles and special offers</Label>
+                                 <InputError message={errors.send_updates} />
+                            </div>
 
                             <Button
                                 type="submit"
-                                className="mt-2 w-full"
+                                className="mt-2 w-full cursor-pointer"
                                 tabIndex={5}
                                 data-test="register-user-button"
                             >
@@ -103,7 +135,7 @@ export default function Register() {
 
                         <div className="text-center text-sm text-muted-foreground">
                             Already have an account?{' '}
-                            <TextLink href={login()} tabIndex={6}>
+                            <TextLink href={login()} tabIndex={6} className='font-semibold hover:underline hover:text-primary'>
                                 Log in
                             </TextLink>
                         </div>
