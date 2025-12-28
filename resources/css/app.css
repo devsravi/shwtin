@@ -1,0 +1,235 @@
+/* =================================================
+|  Global App CSS — Laravel + React + Inertia
+|================================================== */
+
+/* ---------------------------------------------
+|  Design Tokens
+|--------------------------------------------- */
+@import "./_variables.css";
+
+/* ---------------------------------------------
+|  Tailwind Core (v4)
+|--------------------------------------------- */
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* ---------------------------------------------
+|  Tailwind Content Sources
+|--------------------------------------------- */
+@source '../**/*.{js,jsx,ts,tsx}';
+@source '../**/*.blade.php';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+
+/* ---------------------------------------------
+|  Dark Mode Variant
+|--------------------------------------------- */
+@custom-variant dark (&:is(.dark *));
+
+/* ---------------------------------------------
+|  Tailwind Theme Bridge
+|--------------------------------------------- */
+@theme {
+  /* Surfaces */
+  --color-background: var(--background);
+  --color-muted: var(--background-soft);
+
+  /* Text */
+  --color-foreground: var(--foreground);
+  --color-muted-foreground: var(--foreground-muted);
+
+  /* Brand */
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-foreground: #ffffff;
+
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+  --color-accent-foreground: #ffffff;
+
+  /* Semantic */
+  --color-success: var(--success);
+  --color-success-light: var(--success-light);
+  --color-success-foreground: var(--success-foreground);
+
+  --color-warning: var(--warning);
+  --color-warning-light: var(--warning-light);
+  --color-warning-foreground: var(--warning-foreground);
+
+  --color-destructive: var(--error);
+  --color-error-light: var(--error-light);
+  --color-error-foreground: var(--error-foreground);
+
+  --color-info: var(--info);
+  --color-info-light: var(--info-light);
+  --color-info-foreground: var(--info-foreground);
+
+  /* Borders & Inputs */
+  --color-border: color-mix(in oklch, var(--foreground) 12%, transparent);
+  --color-input: var(--background-soft);
+  --color-ring: var(--primary);
+
+  /* Radius */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+
+  /* Font */
+  --font-sans: var(--font-sans);
+}
+
+/* ---------------------------------------------
+|  Base Layer
+|--------------------------------------------- */
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: light;
+  }
+
+  .dark {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans
+           antialiased transition-colors duration-300;
+  }
+}
+
+/* =================================================
+|  UI UTILITIES
+|================================================== */
+
+/* Text */
+.text-gradient {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-muted {
+  @apply text-muted-foreground;
+}
+
+/* Buttons */
+.btn {
+  @apply inline-flex items-center justify-center
+         px-6 py-3 rounded-full
+         font-semibold whitespace-nowrap
+         transition-all duration-200;
+}
+
+.btn-primary {
+  @apply bg-primary text-white
+         shadow-lg shadow-slate-900/20
+         hover:bg-primary-dark hover:scale-105
+         active:scale-95;
+}
+
+.dark .btn-primary {
+  @apply shadow-none
+         hover:shadow-[0_0_0_4px_rgba(56,189,248,0.25)];
+}
+
+.btn-accent {
+  @apply bg-accent text-white hover:bg-accent-light;
+}
+
+.btn-outline {
+  @apply border border-primary
+         text-primary
+         hover:bg-primary hover:text-white;
+}
+
+/* Semantic Buttons */
+.btn-success {
+  @apply bg-success text-success-foreground hover:bg-success-light;
+}
+
+.btn-warning {
+  @apply bg-warning text-warning-foreground hover:bg-warning-light;
+}
+
+.btn-error {
+  @apply bg-destructive text-error-foreground hover:bg-error-light;
+}
+
+/* Cards */
+.glass-card {
+  @apply rounded-2xl border
+         bg-white/85 border-slate-200
+         shadow-sm backdrop-blur
+         transition-all duration-300
+         dark:bg-zinc-900/70 dark:border-zinc-800;
+}
+
+.glass-card-hover:hover {
+  @apply shadow-md -translate-y-1;
+}
+
+.card-soft {
+  @apply rounded-xl
+         bg-muted text-foreground
+         shadow-sm transition-colors;
+}
+
+/* Icons */
+.icon-box {
+  @apply w-12 h-12 rounded-xl
+         flex items-center justify-center
+         bg-gradient-to-br from-primary to-accent
+         text-white;
+}
+
+/* Forms */
+.input-glass {
+  @apply w-full bg-transparent
+         border rounded-xl
+         px-4 py-3
+         text-foreground
+         placeholder:text-muted-foreground
+         focus:outline-none
+         focus:ring-2 focus:ring-primary/30
+         transition-colors duration-300
+         dark:bg-zinc-900;
+}
+
+/* Sections */
+.section-light {
+  @apply bg-white/90 dark:bg-zinc-950/80
+         transition-colors duration-300;
+}
+
+.section-gradient {
+  @apply bg-linear-to-br
+         from-primary/20 to-white
+         dark:from-primary-dark/30 dark:to-zinc-950/80;
+}
+
+/* Dashboard */
+.sidebar {
+  @apply bg-background border-r
+         dark:bg-zinc-950 dark:border-zinc-800;
+}
+
+.sidebar-link {
+  @apply flex items-center gap-3
+         px-4 py-2 rounded-lg
+         text-muted-foreground
+         hover:bg-muted hover:text-foreground
+         transition-colors;
+}
+
+.sidebar-link-active {
+  @apply bg-primary/10 text-primary;
+}
+
+.topbar {
+  @apply sticky top-0 z-40
+         bg-background/80 backdrop-blur
+         border-b dark:border-zinc-800;
+}
