@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
-import AppLogoIcon from '@/components/app-logo-icon';
 import { home } from '@/routes';
-import { type SharedData } from '@/types';
-import { Link, usePage } from '@inertiajs/react';
+import { Link } from '@inertiajs/react';
 import { type PropsWithChildren } from 'react';
 import Logo from '@/components/logo';
 
@@ -39,9 +37,7 @@ export default function AuthSplitLayout({
     title,
     description,
 }: PropsWithChildren<AuthLayoutProps>) {
-    const { name, quote } = usePage<SharedData>().props;
     const [index, setIndex] = useState(0);
-
     useEffect(() => {
         const interval = setInterval(() => {
             setIndex((i) => (i + 1) % FEATURES.length);
