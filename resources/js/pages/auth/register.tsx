@@ -106,8 +106,8 @@ export default function Register() {
                                     tabIndex={3}
                                     className=" border-zinc-300 dark:border-white/10 text-accent focus:ring-accent"
                                 />
-                                <Label htmlFor="tnc">I agree to the Terms of Services. & Privacy Policy. 
-                                    <Span className="text-red-500 relative -top-1 text-sm">*</Span>
+                                <Label htmlFor="tnc">I agree to the <TextLink href={login()} tabIndex={6} className='hover:underline hover:text-primary'>Terms of Services</TextLink>. & <TextLink href={login()} tabIndex={6} className='hover:underline hover:text-primary'>Privacy Policy</TextLink>.<Span className="text-red-500 relative -top-1 text-sm">*</Span> 
+                                    
                                 </Label>
                                 <InputError message={errors.tnc} />
                             </div>
