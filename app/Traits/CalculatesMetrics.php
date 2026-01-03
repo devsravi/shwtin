@@ -26,7 +26,7 @@ trait CalculatesMetrics
 
         $percentage = (($current - $previous) / $previous) * 100;
 
-        return ($percentage >= 0 ? '+' : '').number_format($percentage, 1).'%';
+        return ($percentage >= 0 ? '+' : '') . number_format($percentage, 1) . '%';
     }
 
     /**
@@ -107,7 +107,7 @@ trait CalculatesMetrics
 
         $ctr = $clicks / $views * 100;
 
-        return number_format($ctr, 2).'%';
+        return number_format($ctr, 2) . '%';
     }
 
     /**
@@ -295,7 +295,7 @@ trait CalculatesMetrics
      */
     protected function formatCurrency($amount, string $currency = '$', int $decimals = 2): string
     {
-        return $currency.number_format($amount, $decimals);
+        return $currency . number_format($amount, $decimals);
     }
 
     /**

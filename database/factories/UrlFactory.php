@@ -67,9 +67,9 @@ class UrlFactory extends Factory
         $baseUrl = rtrim(config('short-url.default_url') ?? config('app.url'), '/');
         $prefix = trim(config('short-url.prefix', ''), '/');
 
-        $shortUrl = $baseUrl.'/';
+        $shortUrl = $baseUrl . '/';
         if ($prefix !== '') {
-            $shortUrl .= $prefix.'/';
+            $shortUrl .= $prefix . '/';
         }
         $shortUrl .= $urlKey;
 

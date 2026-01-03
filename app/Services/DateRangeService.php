@@ -277,16 +277,16 @@ class DateRangeService
 
         // Same month
         if ($start->isSameMonth($end)) {
-            return $start->format('M d').' - '.$end->format('d, Y');
+            return $start->format('M d') . ' - ' . $end->format('d, Y');
         }
 
         // Same year
         if ($start->isSameYear($end)) {
-            return $start->format('M d').' - '.$end->format('M d, Y');
+            return $start->format('M d') . ' - ' . $end->format('M d, Y');
         }
 
         // Different years
-        return $start->format('M d, Y').' - '.$end->format('M d, Y');
+        return $start->format('M d, Y') . ' - ' . $end->format('M d, Y');
     }
 
     /**
@@ -325,7 +325,7 @@ class DateRangeService
         $start = Carbon::parse($filters['startDate']);
         $end = Carbon::parse($filters['endDate']);
 
-        return $start->format('M d').' - '.$end->format('M d');
+        return $start->format('M d') . ' - ' . $end->format('M d');
     }
 
     /**

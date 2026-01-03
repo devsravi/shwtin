@@ -190,7 +190,7 @@ class Builder
         $allowedPrefixes = config('short-url.allowed_url_schemes');
 
         if (! Str::startsWith($url, config('short-url.allowed_url_schemes'))) {
-            throw new ShortURLException('The destination URL must begin with an allowed prefix: '.implode(', ', $allowedPrefixes));
+            throw new ShortURLException('The destination URL must begin with an allowed prefix: ' . implode(', ', $allowedPrefixes));
         }
 
         $this->destinationUrl = $url;
@@ -200,7 +200,7 @@ class Builder
 
         // Set the domain and name properties
         $this->domain = $host;
-        $this->name = $host.($path ? ' - '.$path : '');
+        $this->name = $host . ($path ? ' - ' . $path : '');
 
         return $this;
     }
@@ -612,10 +612,10 @@ class Builder
         $baseUrl .= '/';
 
         if ($this->prefix() !== null) {
-            $baseUrl .= $this->prefix().'/';
+            $baseUrl .= $this->prefix() . '/';
         }
 
-        return $baseUrl.$this->urlKey;
+        return $baseUrl . $this->urlKey;
     }
 
     /**

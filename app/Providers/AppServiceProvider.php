@@ -18,7 +18,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__.'/../../config/short-url.php', 'short-url');
+        $this->mergeConfigFrom(__DIR__ . '/../../config/short-url.php', 'short-url');
 
         $this->app->bind(UserAgentDriver::class, config('short-url.user_agent_driver'));
         $this->app->bind(UrlKeyGenerator::class, config('short-url.url_key_generator'));

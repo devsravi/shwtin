@@ -38,7 +38,7 @@ class VisitFactory extends Factory
             'operating_system_alias' => $os = fake()->randomElement($operatingSystems),
             'operating_system_version' => $this->getOsVersion($os),
             'browser' => $browser = fake()->randomElement($browsers),
-            'browser_version' => fake()->numberBetween(80, 120).'.'.fake()->numberBetween(0, 9),
+            'browser_version' => fake()->numberBetween(80, 120) . '.' . fake()->numberBetween(0, 9),
             'engine' => 'Blink',
             'device_type' => fake()->randomElement($deviceTypes),
             'device_manufacturer' => fake()->randomElement($deviceManufacturers),

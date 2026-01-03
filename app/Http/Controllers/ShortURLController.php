@@ -63,6 +63,6 @@ class ShortURLController extends Controller
 
         $separator = $queryString ? '&' : '?';
 
-        return $shortURL->destination_url.$separator.http_build_query($request->query());
+        return $shortURL->destination_url . $separator . http_build_query($request->query());
     }
 }
