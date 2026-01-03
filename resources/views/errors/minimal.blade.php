@@ -43,18 +43,6 @@
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="format-detection" content="telephone=no">
     <meta name="theme-color" content="#0d6efd">
-    {{-- Google tag (gtag.js) --}}
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PGZEP6FJBX"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'G-PGZEP6FJBX');
-    </script>
     {{-- Assets --}}
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     {{-- @livewireStyles --}}
