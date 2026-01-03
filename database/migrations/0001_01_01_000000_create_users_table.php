@@ -14,10 +14,26 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
             $table->string('email')->unique();
+            $table->string('phone_number')->unique()->nullable();
+            $table->text('avatar')->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();
+            $table->boolean('admin')->default(0);
+            $table->string('provider')->nullable()->comment('Provider like Google, Facebook...');
+            $table->text('access_token')->nullable();
+            $table->text('refresh_token')->nullable();
+            $table->text('token_type')->nullable();
+            $table->integer('expires_in')->nullable();
+            $table->timestamp('expires_at')->nullable();
+            $table->text('approved_scopes')->nullable();
+            $table->text('avatar_original')->nullable();
+            $table->text('account_id')->nullable();
+            $table->json('data')->nullable();
             $table->rememberToken();
+            $table->softDeletes();
             $table->timestamps();
         });
 
