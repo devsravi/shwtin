@@ -18,9 +18,13 @@ class ProcessUrlVisit implements ShouldQueue
     use Batchable, Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     public $ip;
+
     public $userAgent;
+
     public $referer;
+
     public $headers;
+
     public $url;
 
     /**
@@ -57,7 +61,7 @@ class ProcessUrlVisit implements ShouldQueue
             Log::alert("Failed to process URL visit for {$this->url->key}", [
                 'error' => $th->getMessage(),
                 'ip' => $this->ip,
-                'trace' => $th->getTraceAsString()
+                'trace' => $th->getTraceAsString(),
             ]);
             throw $th;
         }

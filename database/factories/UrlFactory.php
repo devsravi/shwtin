@@ -67,9 +67,9 @@ class UrlFactory extends Factory
         $baseUrl = rtrim(config('short-url.default_url') ?? config('app.url'), '/');
         $prefix = trim(config('short-url.prefix', ''), '/');
 
-        $shortUrl = $baseUrl . '/';
+        $shortUrl = $baseUrl.'/';
         if ($prefix !== '') {
-            $shortUrl .= $prefix . '/';
+            $shortUrl .= $prefix.'/';
         }
         $shortUrl .= $urlKey;
 
@@ -79,12 +79,12 @@ class UrlFactory extends Factory
     // Optional factory states
     public function deactivated(): self
     {
-        return $this->state(fn() => ['deactivated_at' => now()->subDay()]);
+        return $this->state(fn () => ['deactivated_at' => now()->subDay()]);
     }
 
     public function inactive(): self
     {
-        return $this->state(fn() => [
+        return $this->state(fn () => [
             'activated_at' => null,
             'deactivated_at' => null,
         ]);
@@ -92,7 +92,7 @@ class UrlFactory extends Factory
 
     public function forUser(User $user): self
     {
-        return $this->state(fn() => [
+        return $this->state(fn () => [
             'user_id' => $user->id,
             'is_guest' => false,
         ]);

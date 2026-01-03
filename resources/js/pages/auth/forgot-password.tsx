@@ -9,8 +9,8 @@ import TextLink from '@/components/text-link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import AuthLayout from '@/layouts/auth-layout';
 import { Span } from '@/components/ui/span';
+import AuthLayout from '@/layouts/auth-layout';
 
 export default function ForgotPassword({ status }: { status?: string }) {
     return (
@@ -33,7 +33,9 @@ export default function ForgotPassword({ status }: { status?: string }) {
                             <div className="grid gap-2">
                                 <Label htmlFor="email">
                                     Email address
-                                    <Span className="text-red-500 relative -top-1 text-sm">*</Span>
+                                    <Span className="relative -top-1 text-sm text-red-500">
+                                        *
+                                    </Span>
                                 </Label>
                                 <Input
                                     id="email"
@@ -65,7 +67,12 @@ export default function ForgotPassword({ status }: { status?: string }) {
 
                 <div className="space-x-1 text-center text-sm text-muted-foreground">
                     <span>Or, return to</span>
-                    <TextLink href={login()} className="hover:underline hover:text-primary font-semibold">log in</TextLink>
+                    <TextLink
+                        href={login()}
+                        className="font-semibold hover:text-primary hover:underline"
+                    >
+                        log in
+                    </TextLink>
                 </div>
             </div>
         </AuthLayout>

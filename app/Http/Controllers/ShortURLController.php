@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Url;
 use App\Jobs\ProcessUrlVisit;
+use App\Models\Url;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
 class ShortURLController extends Controller
 {
-
     /**
      * Redirect the user to the intended destination URL. If the default
      * route has been disabled in the config but the controller has
@@ -23,12 +22,12 @@ class ShortURLController extends Controller
         $shortURL = Url::findByKey($shortURLKey);
 
         // If not in cache or not found, return 404
-        if (!$shortURL) {
+        if (! $shortURL) {
             abort(404);
         }
 
         // Validate if URL is still active
-        if (!$shortURL->isActive()) {
+        if (! $shortURL->isActive()) {
             $shortURL->forgetCache();
             abort(404);
         }
@@ -64,6 +63,6 @@ class ShortURLController extends Controller
 
         $separator = $queryString ? '&' : '?';
 
-        return $shortURL->destination_url . $separator . http_build_query($request->query());
+        return $shortURL->destination_url.$separator.http_build_query($request->query());
     }
 }

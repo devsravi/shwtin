@@ -40,11 +40,11 @@ use Illuminate\Notifications\Notifiable;
  */
 final class User extends Authenticatable implements MustVerifyEmail
 {
-    /** 
-     * @use HasFactory<\Database\Factories\UserFactory> 
+    /**
+     * @use HasFactory<\Database\Factories\UserFactory>
      * @use Notifiable<\Illuminate\Notifications\Notifiable>
      * @use softDeletes<\Illuminate\Database\Eloquent\SoftDeletes>
-     * 
+     *
      * */
     use HasFactory, Notifiable, SoftDeletes;
 
@@ -110,8 +110,6 @@ final class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * The function is return true if the record uer is admin
-     *
-     * @return bool
      */
     public function isAdmin(): bool
     {

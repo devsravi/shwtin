@@ -46,7 +46,7 @@ class UserFactory extends Factory
             'account_id' => null,
             'data' => null,
             'tnc' => true,
-            'send_updates' => true
+            'send_updates' => true,
         ];
     }
 
@@ -55,7 +55,7 @@ class UserFactory extends Factory
      */
     public function unverified(): static
     {
-        return $this->state(fn(array $attributes) => [
+        return $this->state(fn (array $attributes) => [
             'email_verified_at' => Carbon::now(),
         ]);
     }

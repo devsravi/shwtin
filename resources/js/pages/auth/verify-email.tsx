@@ -25,14 +25,18 @@ export default function VerifyEmail({ status }: { status?: string }) {
             <Form {...send.form()} className="space-y-6 text-center">
                 {({ processing }) => (
                     <>
-                        <Button disabled={processing} variant="secondary" className="w-full cursor-pointer">
+                        <Button
+                            disabled={processing}
+                            variant="secondary"
+                            className="w-full cursor-pointer"
+                        >
                             {processing && <Spinner />}
                             Resend verification email
                         </Button>
 
                         <TextLink
                             href={logout()}
-                            className="mx-auto block text-sm hover:underline hover:text-primary font-semibold"
+                            className="mx-auto block text-sm font-semibold hover:text-primary hover:underline"
                         >
                             Log out
                         </TextLink>

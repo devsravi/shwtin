@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
 {
@@ -12,6 +12,7 @@ class UserSeeder extends Seeder
      * The current password being used by the factory.
      */
     protected static ?string $password;
+
     /**
      * Run the database seeds.
      */
@@ -20,7 +21,7 @@ class UserSeeder extends Seeder
         try {
             DB::table('users')->updateOrInsert(
                 [
-                    'email' => 'ravi.kumar@tri.me'
+                    'email' => 'ravi.kumar@tri.me',
                 ],
                 [
                     'name' => 'Ravi Kunar',
@@ -29,7 +30,7 @@ class UserSeeder extends Seeder
                     'phone_number' => '+916388778933',
                     'password' => static::$password ??= Hash::make('ravi.kumar@tri.me'),
                     'admin' => 1,
-                    'email_verified_at' => now()
+                    'email_verified_at' => now(),
                 ]
             );
         } catch (\Throwable $th) {

@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace App\Models;
 
 use App\Models\Scopes\OwnerScope;
-use Illuminate\Database\Eloquent\Model;
 use Carbon\CarbonInterface;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Attributes\Scope;
 use Illuminate\Database\Eloquent\Attributes\ScopedBy;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -48,13 +48,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property CarbonInterface $created_at
  * @property CarbonInterface $updated_at
  */
-
 #[ScopedBy([OwnerScope::class])]
 class Visit extends Model
 {
-
     /**
-     * @use HasFactory<\Database\Factories\VisitFactory> 
+     * @use HasFactory<\Database\Factories\VisitFactory>
      * @use softDeletes<\Illuminate\Database\Eloquent\SoftDeletes>
      */
     use HasFactory, SoftDeletes;
@@ -69,7 +67,6 @@ class Visit extends Model
     public const DEVICE_TYPE_TABLET = 'tablet';
 
     public const DEVICE_TYPE_ROBOT = 'robot';
-
 
     /**
      * The attributes that should be cast to native types.
@@ -87,18 +84,12 @@ class Visit extends Model
 
     /**
      * Scope a query to get the records Between.
-     * 
-     * @param Builder $query
-     * @param string $startDate
-     * @param string $endDate
-     * @return Builder
      */
     #[Scope]
     public function forDateRange(Builder $query, string $startDate, string $endDate): Builder
     {
         return $query->whereBetween('visited_at', [$startDate, $endDate]);
     }
-
 
     /**
      * A URL visit belongs to one specific shortened URL.
@@ -109,8 +100,6 @@ class Visit extends Model
     {
         return $this->belongsTo(Url::class);
     }
-
-
 
     /**
      * A URL visit belongs to one specific user that is created short url.

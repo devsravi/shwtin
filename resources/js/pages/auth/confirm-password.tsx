@@ -1,6 +1,5 @@
 import InputError from '@/components/input-error';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { PasswordInput } from '@/components/ui/password-input';
 import { Span } from '@/components/ui/span';
@@ -21,8 +20,11 @@ export default function ConfirmPassword() {
                 {({ processing, errors }) => (
                     <div className="space-y-6">
                         <div className="grid gap-2">
-                            <Label htmlFor="password">Password
-                                <Span className="text-red-500 relative -top-1 text-sm">*</Span>
+                            <Label htmlFor="password">
+                                Password
+                                <Span className="relative -top-1 text-sm text-red-500">
+                                    *
+                                </Span>
                             </Label>
                             <PasswordInput
                                 id="password"

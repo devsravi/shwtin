@@ -37,7 +37,6 @@ class Policy extends Model
         'is_active' => 'boolean',
     ];
 
-
     /**
      * A policy belongs to a user.
      *

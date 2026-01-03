@@ -28,6 +28,7 @@ class ParserPhpDriver implements UserAgentDriver
         if ($this->isRobot()) {
             return null;
         }
+
         /** @phpstan-ignore-next-line  */
         return $this->parser->os->alias ?? null;
     }
@@ -65,6 +66,7 @@ class ParserPhpDriver implements UserAgentDriver
     {
         return $this->parser->device->getManufacturer();
     }
+
     public function getDeviceModel(): ?string
     {
         return $this->parser->device->getModel();

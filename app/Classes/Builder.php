@@ -24,6 +24,7 @@ class Builder
     protected int|string|null $authUser = null;
 
     protected bool $isGuest = true;
+
     /**
      * The class that is used for generating the random URL keys.
      */
@@ -33,7 +34,6 @@ class Builder
      * The destination URL that the short URL will redirect to.
      */
     protected ?string $destinationUrl = null;
-
 
     /**
      * The short URL
@@ -84,7 +84,6 @@ class Builder
      * A  sort key that might be explicitly set for this URL.
      */
     protected ?string $shortKey = null;
-
 
     /**
      * The HTTP status code that will be used when redirecting the user.
@@ -190,8 +189,8 @@ class Builder
     {
         $allowedPrefixes = config('short-url.allowed_url_schemes');
 
-        if (!Str::startsWith($url, config('short-url.allowed_url_schemes'))) {
-            throw new ShortURLException('The destination URL must begin with an allowed prefix: ' . implode(', ', $allowedPrefixes));
+        if (! Str::startsWith($url, config('short-url.allowed_url_schemes'))) {
+            throw new ShortURLException('The destination URL must begin with an allowed prefix: '.implode(', ', $allowedPrefixes));
         }
 
         $this->destinationUrl = $url;
@@ -201,12 +200,10 @@ class Builder
 
         // Set the domain and name properties
         $this->domain = $host;
-        $this->name = $host . ($path ? ' - ' . $path : '');
+        $this->name = $host.($path ? ' - '.$path : '');
 
         return $this;
     }
-
-
 
     /**
      * Override the auto-generated name for the short link.
@@ -227,7 +224,6 @@ class Builder
 
         return $this;
     }
-
 
     /**
      * Set whether the shortened URL can be accessed more than once.
@@ -438,7 +434,7 @@ class Builder
      */
     public function make(): Url
     {
-        if (!$this->destinationUrl) {
+        if (! $this->destinationUrl) {
             throw new ShortURLException('No destination URL has been set.');
         }
 
@@ -523,11 +519,11 @@ class Builder
             $this->forwardQueryParams = config('short-url.forward_query_params') ?? false;
         }
 
-        if (!$this->urlKey) {
+        if (! $this->urlKey) {
             $this->urlKey = $this->keyGenerator->generateKeyUsing($this->generateKeyUsing);
         }
 
-        if (!$this->activateAt) {
+        if (! $this->activateAt) {
             $this->activateAt = Carbon::now();
         }
 
@@ -616,15 +612,14 @@ class Builder
         $baseUrl .= '/';
 
         if ($this->prefix() !== null) {
-            $baseUrl .= $this->prefix() . '/';
+            $baseUrl .= $this->prefix().'/';
         }
 
-        return $baseUrl . $this->urlKey;
+        return $baseUrl.$this->urlKey;
     }
 
     /**
      * Get the generated short URL.
-     * @return string
      */
     public function getShortUrl(): string
     {
@@ -633,7 +628,6 @@ class Builder
 
     /**
      * Get the generated short key.
-     * @return string
      */
     public function getShortKey(): string
     {

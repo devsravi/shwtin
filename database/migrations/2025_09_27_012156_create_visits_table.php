@@ -62,7 +62,6 @@ return new class extends Migration
             $table->json('geo_data')->nullable();
             $table->json('request_headers')->nullable();
 
-
             // Visit time
             $table->timestamp('visited_at')->useCurrent()->index();
             $table->softDeletes();

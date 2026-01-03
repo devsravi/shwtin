@@ -41,6 +41,7 @@ class Resolver
             headers: $headers,
             shortURL: $shortURL
         );
+
         return true;
     }
 
@@ -79,7 +80,7 @@ class Resolver
         array $headers,
         Url $shortURL
     ): Visit {
-        $visit = new Visit();
+        $visit = new Visit;
 
         $visit->user_id = $shortURL->user_id;
         $visit->url_id = $shortURL->id;
@@ -142,6 +143,7 @@ class Resolver
             $visit->device_model = $userAgentParser->getDeviceModel();
         }
     }
+
     /**
      * Track the geo location data by ip, add
      * them as db.

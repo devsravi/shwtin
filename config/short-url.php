@@ -49,7 +49,7 @@ return [
     */
     'factories' => [
         \App\Models\URL::class => \Database\Factories\UrlFactory::class,
-        \App\Models\Visit::class =>  \Database\Factories\VisitFactory::class,
+        \App\Models\Visit::class => \Database\Factories\VisitFactory::class,
     ],
 
     /*
@@ -119,7 +119,7 @@ return [
     'allowed_url_schemes' => [
         'http://',
         'https://',
-        'mailto://'
+        'mailto://',
     ],
 
     /*

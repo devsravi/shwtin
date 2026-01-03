@@ -3,13 +3,8 @@
 namespace App\Listeners;
 
 use App\Jobs\AssignGuestShortUrlsToUser;
-use App\Models\Url;
-use App\Models\Visit;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Support\Facades\Log as FacadesLog;
 use Illuminate\Support\Facades\Session;
 
 class AssignGuestUrlsAfterAuth

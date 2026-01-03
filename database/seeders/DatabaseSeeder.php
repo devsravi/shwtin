@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // Seed admin user first 
+        // Seed admin user first
         $this->call([
             UserSeeder::class,
         ]);
@@ -29,7 +29,6 @@ class DatabaseSeeder extends Seeder
 
         // Anonymous visit
         // Visit::factory()->count(500)->anonymous()->create();
-
 
         // Visit for specific user and URL
         // Visit::factory()

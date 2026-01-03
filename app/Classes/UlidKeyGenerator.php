@@ -65,6 +65,7 @@ class UlidKeyGenerator implements UrlKeyGenerator
 
         // Generate deterministic key from seed
         $hash = hash('sha256', (string) $seed);
+
         return substr($hash, 0, $this->keyLength);
     }
 }

@@ -1,16 +1,16 @@
-import { login } from '@/routes';
-import { store } from '@/routes/register';
-import { Form, Head } from '@inertiajs/react';
 import InputError from '@/components/input-error';
 import TextLink from '@/components/text-link';
 import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { PasswordInput } from '@/components/ui/password-input';
+import { Span } from '@/components/ui/span';
 import { Spinner } from '@/components/ui/spinner';
 import AuthLayout from '@/layouts/auth-layout';
-import { PasswordInput } from '@/components/ui/password-input';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Span } from '@/components/ui/span';
+import { login } from '@/routes';
+import { store } from '@/routes/register';
+import { Form, Head } from '@inertiajs/react';
 
 export default function Register() {
     return (
@@ -31,7 +31,9 @@ export default function Register() {
                             <div className="grid gap-2">
                                 <Label htmlFor="name">
                                     Name
-                                    <Span className="text-red-500 relative -top-1 text-sm">*</Span>
+                                    <Span className="relative -top-1 text-sm text-red-500">
+                                        *
+                                    </Span>
                                 </Label>
                                 <Input
                                     id="name"
@@ -50,8 +52,11 @@ export default function Register() {
                             </div>
 
                             <div className="grid gap-2">
-                                <Label htmlFor="email">Email address
-                                    <Span className="text-red-500 relative -top-1 text-sm">*</Span>
+                                <Label htmlFor="email">
+                                    Email address
+                                    <Span className="relative -top-1 text-sm text-red-500">
+                                        *
+                                    </Span>
                                 </Label>
                                 <Input
                                     id="email"
@@ -66,8 +71,11 @@ export default function Register() {
                             </div>
 
                             <div className="grid gap-2">
-                                <Label htmlFor="password">Password
-                                    <Span className="text-red-500 relative -top-1 text-sm">*</Span>
+                                <Label htmlFor="password">
+                                    Password
+                                    <Span className="relative -top-1 text-sm text-red-500">
+                                        *
+                                    </Span>
                                 </Label>
                                 <PasswordInput
                                     id="password"
@@ -83,7 +91,9 @@ export default function Register() {
                             <div className="grid gap-2">
                                 <Label htmlFor="password_confirmation">
                                     Confirm password
-                                    <Span className="text-red-500 relative -top-1 text-sm">*</Span>
+                                    <Span className="relative -top-1 text-sm text-red-500">
+                                        *
+                                    </Span>
                                 </Label>
                                 <PasswordInput
                                     id="password_confirmation"
@@ -103,10 +113,29 @@ export default function Register() {
                                     id="tnc"
                                     name="tnc"
                                     tabIndex={3}
-                                    className=" border-zinc-300 dark:border-white/10 text-accent focus:ring-accent"
+                                    className="border-zinc-300 text-accent focus:ring-accent dark:border-white/10"
                                 />
-                                <Label htmlFor="tnc">I agree to the <TextLink href={login()} tabIndex={6} className='hover:underline hover:text-primary'>Terms of Services</TextLink>. & <TextLink href={login()} tabIndex={6} className='hover:underline hover:text-primary'>Privacy Policy</TextLink>.<Span className="text-red-500 relative -top-1 text-sm">*</Span> 
-                                    
+                                <Label htmlFor="tnc">
+                                    I agree to the{' '}
+                                    <TextLink
+                                        href={login()}
+                                        tabIndex={6}
+                                        className="hover:text-primary hover:underline"
+                                    >
+                                        Terms of Services
+                                    </TextLink>
+                                    . &{' '}
+                                    <TextLink
+                                        href={login()}
+                                        tabIndex={6}
+                                        className="hover:text-primary hover:underline"
+                                    >
+                                        Privacy Policy
+                                    </TextLink>
+                                    .
+                                    <Span className="relative -top-1 text-sm text-red-500">
+                                        *
+                                    </Span>
                                 </Label>
                                 <InputError message={errors.tnc} />
                             </div>
@@ -115,10 +144,13 @@ export default function Register() {
                                     id="send_updates"
                                     name="send_updates"
                                     tabIndex={3}
-                                    className=" border-zinc-300 dark:border-white/10 text-accent focus:ring-accent"
+                                    className="border-zinc-300 text-accent focus:ring-accent dark:border-white/10"
                                 />
-                                <Label htmlFor="send_updates">Send me updates about articles and special offers</Label>
-                                 <InputError message={errors.send_updates} />
+                                <Label htmlFor="send_updates">
+                                    Send me updates about articles and special
+                                    offers
+                                </Label>
+                                <InputError message={errors.send_updates} />
                             </div>
 
                             <Button
@@ -134,7 +166,11 @@ export default function Register() {
 
                         <div className="text-center text-sm text-muted-foreground">
                             Already have an account?{' '}
-                            <TextLink href={login()} tabIndex={6} className='font-semibold hover:underline hover:text-primary'>
+                            <TextLink
+                                href={login()}
+                                tabIndex={6}
+                                className="font-semibold hover:text-primary hover:underline"
+                            >
                                 Log in
                             </TextLink>
                         </div>

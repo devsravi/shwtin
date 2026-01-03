@@ -1,5 +1,5 @@
-import { ImgHTMLAttributes } from 'react';
 import { cn } from '@/lib/utils';
+import { ImgHTMLAttributes } from 'react';
 
 interface LogoProps extends ImgHTMLAttributes<HTMLImageElement> {
     src?: string;
@@ -16,10 +16,7 @@ export default function Logo({
             src={src}
             alt={alt}
             draggable={false}
-            className={cn(
-                'block select-none object-contain',
-                className
-            )}
+            className={cn('block object-contain select-none', className)}
             {...props}
         />
     );

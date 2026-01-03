@@ -4,14 +4,14 @@ import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { PasswordInput } from '@/components/ui/password-input';
+import { Span } from '@/components/ui/span';
 import { Spinner } from '@/components/ui/spinner';
 import AuthLayout from '@/layouts/auth-layout';
 import { register } from '@/routes';
 import { store } from '@/routes/login';
 import { request } from '@/routes/password';
 import { Form, Head } from '@inertiajs/react';
-import { PasswordInput } from '@/components/ui/password-input';
-import { Span } from '@/components/ui/span';
 
 interface LoginProps {
     status?: string;
@@ -43,7 +43,9 @@ export default function Login({
                             <div className="grid gap-2">
                                 <Label htmlFor="email">
                                     Email address
-                                     <Span className="text-red-500 relative -top-1 text-sm">*</Span>
+                                    <Span className="relative -top-1 text-sm text-red-500">
+                                        *
+                                    </Span>
                                 </Label>
                                 <Input
                                     id="email"
@@ -62,12 +64,14 @@ export default function Login({
                                 <div className="flex items-center">
                                     <Label htmlFor="password">
                                         Password
-                                         <Span className="text-red-500 relative -top-1 text-sm">*</Span>
+                                        <Span className="relative -top-1 text-sm text-red-500">
+                                            *
+                                        </Span>
                                     </Label>
                                     {canResetPassword && (
                                         <TextLink
                                             href={request()}
-                                            className="ml-auto text-sm hover:underline hover:text-primary"
+                                            className="ml-auto text-sm hover:text-primary hover:underline"
                                             tabIndex={5}
                                         >
                                             Forgot password?
@@ -81,7 +85,6 @@ export default function Login({
                                     tabIndex={2}
                                     autoComplete="current-password"
                                     placeholder="Password"
-                                    
                                 />
                                 <InputError message={errors.password} />
                             </div>
@@ -91,7 +94,7 @@ export default function Login({
                                     id="remember"
                                     name="remember"
                                     tabIndex={3}
-                                    className=" border-zinc-300 dark:border-white/10 text-accent focus:ring-accent"
+                                    className="border-zinc-300 text-accent focus:ring-accent dark:border-white/10"
                                 />
                                 <Label htmlFor="remember">Remember me</Label>
                             </div>
@@ -111,10 +114,10 @@ export default function Login({
                         {canRegister && (
                             <div className="text-center text-sm text-muted-foreground">
                                 Don't have an account?{' '}
-                                <TextLink 
-                                href={register()} 
-                                tabIndex={5}
-                                className='ml-auto text-md font-semibold hover:underline hover:text-primary'
+                                <TextLink
+                                    href={register()}
+                                    tabIndex={5}
+                                    className="text-md ml-auto font-semibold hover:text-primary hover:underline"
                                 >
                                     Sign up
                                 </TextLink>

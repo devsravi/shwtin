@@ -9,9 +9,9 @@ use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\Attributes\Scope;
 use Illuminate\Database\Eloquent\Attributes\ScopedBy;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
@@ -45,17 +45,14 @@ use Illuminate\Support\Facades\Cache;
  * @property CarbonInterface $created_at
  * @property CarbonInterface $updated_at
  */
-
-
 #[ScopedBy([OwnerScope::class])]
 final class Url extends Model
 {
     /**
-     * @use HasFactory<\Database\Factories\UrlFactory> 
+     * @use HasFactory<\Database\Factories\UrlFactory>
      * @use softDeletes<\Illuminate\Database\Eloquent\SoftDeletes>
      */
     use HasFactory, SoftDeletes;
-
 
     /**
      * The table associated with the model.
@@ -85,7 +82,6 @@ final class Url extends Model
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
-
 
     /**
      * A short URL can be created by.
@@ -127,7 +123,6 @@ final class Url extends Model
 
         return Cache::get($cacheKey);
     }
-
 
     /**
      * A helper method that can be used for finding all the ShortURL models
@@ -189,27 +184,26 @@ final class Url extends Model
     protected static function booted(): void
     {
         // Cache URL when created
-        static::created(function (Url $url) {
+        self::created(function (Url $url) {
             $url->cacheUrl();
         });
 
         // Update cache when URL is updated
-        static::updated(function (Url $url) {
+        self::updated(function (Url $url) {
             $url->forgetCache();
             $url->cacheUrl();
         });
 
         // Remove from cache when deleted
-        static::deleted(function (Url $url) {
+        self::deleted(function (Url $url) {
             $url->forgetCache();
         });
 
         // Update cache when URL is saved (covers both create and update)
-        static::saved(function (Url $url) {
+        self::saved(function (Url $url) {
             $url->cacheUrl();
         });
     }
-
 
     /**
      * A helper method to determine whether if tracking is currently enabled
@@ -261,22 +255,14 @@ final class Url extends Model
         return $fields;
     }
 
-
     /**
      * Scope a query to get the records Between.
-     * 
-     * @param Builder $query
-     * @param string $startDate
-     * @param string $endDate
-     * @return Builder
      */
     #[Scope]
     public function forDateRange(Builder $query, string $startDate, string $endDate): Builder
     {
         return $query->whereBetween('created_at', [$startDate, $endDate]);
     }
-
-
 
     /**
      * Get all of the tags for the Url.

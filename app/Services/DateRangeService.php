@@ -9,7 +9,6 @@ class DateRangeService
     /**
      * Calculate date range based on filters
      *
-     * @param array $filters
      * @return array ['startDate' => string, 'endDate' => string]
      */
     public function calculateDateRange(array $filters): array
@@ -96,7 +95,6 @@ class DateRangeService
     /**
      * Calculate previous date range for comparison
      *
-     * @param array $filters
      * @return array ['previousStartDate' => string, 'previousEndDate' => string]
      */
     public function calculatePreviousDateRange(array $filters): array
@@ -187,57 +185,46 @@ class DateRangeService
 
     /**
      * Get only start date
-     *
-     * @param array $filters
-     * @return string
      */
     public function getStartDate(array $filters): string
     {
         $dates = $this->calculateDateRange($filters);
+
         return $dates['startDate'];
     }
 
     /**
      * Get only end date
-     *
-     * @param array $filters
-     * @return string
      */
     public function getEndDate(array $filters): string
     {
         $dates = $this->calculateDateRange($filters);
+
         return $dates['endDate'];
     }
 
     /**
      * Get only previous start date
-     *
-     * @param array $filters
-     * @return string
      */
     public function getPreviousStartDate(array $filters): string
     {
         $dates = $this->calculatePreviousDateRange($filters);
+
         return $dates['previousStartDate'];
     }
 
     /**
      * Get only previous end date
-     *
-     * @param array $filters
-     * @return string
      */
     public function getPreviousEndDate(array $filters): string
     {
         $dates = $this->calculatePreviousDateRange($filters);
+
         return $dates['previousEndDate'];
     }
 
     /**
      * Get all date ranges (current and previous)
-     *
-     * @param array $filters
-     * @return array
      */
     public function getAllDateRanges(array $filters): array
     {
@@ -249,9 +236,6 @@ class DateRangeService
 
     /**
      * Get human-readable date range description
-     *
-     * @param array $filters
-     * @return string
      */
     public function getHumanReadableDateRange(array $filters): string
     {
@@ -276,13 +260,10 @@ class DateRangeService
 
     /**
      * Format custom date range as human-readable string
-     *
-     * @param array $filters
-     * @return string
      */
     protected function formatCustomDateRange(array $filters): string
     {
-        if (!isset($filters['startDate']) || !isset($filters['endDate'])) {
+        if (! isset($filters['startDate']) || ! isset($filters['endDate'])) {
             return 'Custom Range';
         }
 
@@ -296,23 +277,20 @@ class DateRangeService
 
         // Same month
         if ($start->isSameMonth($end)) {
-            return $start->format('M d') . ' - ' . $end->format('d, Y');
+            return $start->format('M d').' - '.$end->format('d, Y');
         }
 
         // Same year
         if ($start->isSameYear($end)) {
-            return $start->format('M d') . ' - ' . $end->format('M d, Y');
+            return $start->format('M d').' - '.$end->format('M d, Y');
         }
 
         // Different years
-        return $start->format('M d, Y') . ' - ' . $end->format('M d, Y');
+        return $start->format('M d, Y').' - '.$end->format('M d, Y');
     }
 
     /**
      * Get short human-readable date range (for compact display)
-     *
-     * @param array $filters
-     * @return string
      */
     public function getShortDateRange(array $filters): string
     {
@@ -337,27 +315,21 @@ class DateRangeService
 
     /**
      * Format custom date range as short string
-     *
-     * @param array $filters
-     * @return string
      */
     protected function formatCustomDateRangeShort(array $filters): string
     {
-        if (!isset($filters['startDate']) || !isset($filters['endDate'])) {
+        if (! isset($filters['startDate']) || ! isset($filters['endDate'])) {
             return 'Custom';
         }
 
         $start = Carbon::parse($filters['startDate']);
         $end = Carbon::parse($filters['endDate']);
 
-        return $start->format('M d') . ' - ' . $end->format('M d');
+        return $start->format('M d').' - '.$end->format('M d');
     }
 
     /**
      * Get detailed date range with actual dates
-     *
-     * @param array $filters
-     * @return string
      */
     public function getDetailedDateRange(array $filters): string
     {
@@ -371,9 +343,6 @@ class DateRangeService
 
     /**
      * Get comparison period description
-     *
-     * @param array $filters
-     * @return string
      */
     public function getComparisonPeriodDescription(array $filters): string
     {

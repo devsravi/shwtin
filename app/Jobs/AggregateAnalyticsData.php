@@ -1,9 +1,9 @@
 <?php
+
 // app/Jobs/AggregateAnalyticsDataJob.php
 
 namespace App\Jobs;
 
-use App\Models\AnalyticsSummary;
 use App\Models\User;
 use App\Models\Visit;
 use Illuminate\Bus\Queueable;
@@ -99,7 +99,7 @@ class AggregateAnalyticsData implements ShouldQueue
         }
 
         // Bulk upsert
-        if (!empty($dataToInsert)) {
+        if (! empty($dataToInsert)) {
         }
     }
 
@@ -113,12 +113,12 @@ class AggregateAnalyticsData implements ShouldQueue
             case 'os':
                 return [
                     'os_alias' => $result->operating_system_alias ?? null,
-                    'os_version' => $result->operating_system_version ?? null
+                    'os_version' => $result->operating_system_version ?? null,
                 ];
             case 'device':
                 return [
                     'device_manufacturer' => $result->device_manufacturer ?? null,
-                    'device_model' => $result->device_model ?? null
+                    'device_model' => $result->device_model ?? null,
                 ];
             default:
                 return null;

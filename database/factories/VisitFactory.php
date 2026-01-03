@@ -2,9 +2,9 @@
 
 namespace Database\Factories;
 
-use App\Models\Visit;
-use App\Models\User;
 use App\Models\Url;
+use App\Models\User;
+use App\Models\Visit;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -26,19 +26,19 @@ class VisitFactory extends Factory
         $deviceTypes = ['desktop', 'mobile', 'tablet'];
         $deviceManufacturers = ['Apple', 'Samsung', 'Lenovo', 'HP', 'ACER', 'ASUS', 'MOTOROLA'];
         $ips = collect(range(1, 200))
-            ->map(fn() => fake()->ipv4())
+            ->map(fn () => fake()->ipv4())
             ->toArray();
 
         return [
             'user_id' => User::inRandomOrder()->first()?->id,
             'url_id' => Url::inRandomOrder()->first()->id,
-            'ip_address' =>  fn() => $ips[array_rand($ips)],
+            'ip_address' => fn () => $ips[array_rand($ips)],
             'user_agent' => fake()->userAgent(),
             'operating_system' => $os = fake()->randomElement($operatingSystems),
             'operating_system_alias' => $os = fake()->randomElement($operatingSystems),
             'operating_system_version' => $this->getOsVersion($os),
             'browser' => $browser = fake()->randomElement($browsers),
-            'browser_version' => fake()->numberBetween(80, 120) . '.' . fake()->numberBetween(0, 9),
+            'browser_version' => fake()->numberBetween(80, 120).'.'.fake()->numberBetween(0, 9),
             'engine' => 'Blink',
             'device_type' => fake()->randomElement($deviceTypes),
             'device_manufacturer' => fake()->randomElement($deviceManufacturers),
@@ -55,7 +55,7 @@ class VisitFactory extends Factory
             'currency' => json_encode([
                 'code' => fake()->currencyCode(),
                 'symbol' => fake()->randomElement(['$', '€', '£', '¥', '₹']),
-                'name' => fake()->randomElement(['US Dollar', 'Euro', 'British Pound', 'Japanese Yen', 'Indian Rupee'])
+                'name' => fake()->randomElement(['US Dollar', 'Euro', 'British Pound', 'Japanese Yen', 'Indian Rupee']),
             ]),
             'is_default' => fake()->randomElement(['yes', 'no', null]),
             'referer_url' => fake()->optional(0.7)->url(),
@@ -68,7 +68,7 @@ class VisitFactory extends Factory
      */
     public function anonymous(): static
     {
-        return $this->state(fn(array $attributes) => [
+        return $this->state(fn (array $attributes) => [
             'user_id' => null,
         ]);
     }
@@ -78,7 +78,7 @@ class VisitFactory extends Factory
      */
     public function forUser(User|int $user): static
     {
-        return $this->state(fn(array $attributes) => [
+        return $this->state(fn (array $attributes) => [
             'user_id' => $user instanceof User ? $user->id : $user,
         ]);
     }
@@ -88,7 +88,7 @@ class VisitFactory extends Factory
      */
     public function forUrl(Url|int $url): static
     {
-        return $this->state(fn(array $attributes) => [
+        return $this->state(fn (array $attributes) => [
             'url_id' => $url instanceof Url ? $url->id : $url,
         ]);
     }
@@ -98,7 +98,7 @@ class VisitFactory extends Factory
      */
     public function mobile(): static
     {
-        return $this->state(fn(array $attributes) => [
+        return $this->state(fn (array $attributes) => [
             'device_type' => 'mobile',
             'operating_system' => fake()->randomElement(['iOS', 'Android']),
             'operating_system_version' => fake()->randomElement(['14.0', '15.0', '16.0', '17.0']),
@@ -110,7 +110,7 @@ class VisitFactory extends Factory
      */
     public function desktop(): static
     {
-        return $this->state(fn(array $attributes) => [
+        return $this->state(fn (array $attributes) => [
             'device_type' => 'desktop',
             'operating_system' => fake()->randomElement(['Windows', 'macOS', 'Linux']),
         ]);
@@ -121,7 +121,7 @@ class VisitFactory extends Factory
      */
     public function fromCountry(string $country, string $isoCode): static
     {
-        return $this->state(fn(array $attributes) => [
+        return $this->state(fn (array $attributes) => [
             'country' => $country,
             'iso_code' => $isoCode,
         ]);
@@ -132,7 +132,7 @@ class VisitFactory extends Factory
      */
     public function recent(): static
     {
-        return $this->state(fn(array $attributes) => [
+        return $this->state(fn (array $attributes) => [
             'visited_at' => fake()->dateTimeBetween('-7 days', 'now'),
         ]);
     }
@@ -142,7 +142,7 @@ class VisitFactory extends Factory
      */
     public function today(): static
     {
-        return $this->state(fn(array $attributes) => [
+        return $this->state(fn (array $attributes) => [
             'visited_at' => fake()->dateTimeBetween('today', 'now'),
         ]);
     }
