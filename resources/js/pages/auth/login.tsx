@@ -79,7 +79,7 @@ export default function Login({
                                     )}
                                 </div>
                                 <PasswordInput
-                                    id="passwords"
+                                    id="password"
                                     name="password"
                                     required
                                     tabIndex={2}
