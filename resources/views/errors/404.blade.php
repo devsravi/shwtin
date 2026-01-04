@@ -1,4 +1,4 @@
-@extends('errors::minimal')
+@extends('errors.minimal')
 
 @section('code', '404')
 @section('title', 'Page Not Found')
