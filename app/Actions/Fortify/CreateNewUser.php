@@ -28,12 +28,16 @@ class CreateNewUser implements CreatesNewUsers
                 Rule::unique(User::class),
             ],
             'password' => $this->passwordRules(),
+            'tnc' => ['required', 'string'],
+            'send_updates' => ['string'],
         ])->validate();
 
         return User::create([
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => $input['password'],
+            'tnc' => $input['tnc'] ?? true,
+            'send_updates' => $input['send_updates'] ?? true,
         ]);
     }
 }

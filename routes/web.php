@@ -1,12 +1,14 @@
 <?php
 
-use App\Http\Controllers\AppController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', AppController::class)->name('home');
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/', function () {
+    return 'Hey We are working on it...';
+})->name('home');
+
+Route::prefix('app')->middleware(['auth', 'verified'])->group(function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 });
 
 require __DIR__ . '/settings.php';

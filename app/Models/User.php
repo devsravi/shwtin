@@ -37,6 +37,9 @@ use Illuminate\Notifications\Notifiable;
  * @property-read string|null $token_type
  * @property-read bool $tnc
  * @property-read CarbonInterface $updated_at
+ * @property-read CarbonInterface|null $two_factor_confirmed_at
+ * @property-read string|null $two_factor_secret
+ * @property-read string|null $two_factor_recovery_codes
  */
 final class User extends Authenticatable implements MustVerifyEmail
 {
@@ -75,6 +78,9 @@ final class User extends Authenticatable implements MustVerifyEmail
         'send_updates',
         'token_type',
         'tnc',
+        'two_factor_confirmed_at',
+        'two_factor_recovery_codes',
+        'two_factor_secret',
     ];
 
     /**
@@ -83,10 +89,13 @@ final class User extends Authenticatable implements MustVerifyEmail
      * @var list<string>
      */
     protected $hidden = [
+        'access_token',
         'password',
         'remember_token',
-        'access_token',
         'refresh_token',
+        'two_factor_recovery_codes',
+        'two_factor_secret',
+
     ];
 
     /**
@@ -105,6 +114,7 @@ final class User extends Authenticatable implements MustVerifyEmail
             'password' => 'hashed',
             'send_updates' => 'boolean',
             'tnc' => 'boolean',
+            'two_factor_confirmed_at' => 'datetime',
         ];
     }
 
