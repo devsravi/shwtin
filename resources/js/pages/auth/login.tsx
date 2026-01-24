@@ -22,7 +22,7 @@ interface LoginProps {
 export default function Login({
     status,
     canResetPassword,
-    canRegister,
+    canRegister = true,
 }: LoginProps) {
     return (
         <AuthLayout

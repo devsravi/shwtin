@@ -54,7 +54,7 @@ export default function AuthSplitLayout({
     return (
         <div className="relative grid h-dvh flex-col items-center justify-center px-8 sm:px-0 lg:max-w-none lg:grid-cols-2 lg:px-0">
             {/* LEFT PANEL */}
-            <div className="relative hidden h-full flex-col justify-between overflow-hidden bg-gradient-to-br from-primary to-primary-dark p-10 text-white lg:flex">
+            <div className="relative hidden h-full flex-col justify-between overflow-hidden bg-linear-to-br from-primary to-primary-dark p-10 text-white lg:flex">
                 <Link
                     href={home()}
                     className="relative z-10 flex items-center text-lg font-medium"
@@ -126,7 +126,7 @@ export default function AuthSplitLayout({
 
             {/* RIGHT PANEL */}
             <div className="w-full lg:p-8">
-                <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
+                <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-87.5">
                     <Link
                         href={home()}
                         className="relative z-20 flex items-center justify-center"
