@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Fortify\TwoFactorAuthenticatable;
 
 /**
  * @property-read string|null $access_token
@@ -47,9 +48,10 @@ final class User extends Authenticatable implements MustVerifyEmail
      * @use HasFactory<\Database\Factories\UserFactory>
      * @use Notifiable<\Illuminate\Notifications\Notifiable>
      * @use softDeletes<\Illuminate\Database\Eloquent\SoftDeletes>
+     * @use TwoFactorAuthenticatable<\Laravel\Fortify\TwoFactorAuthenticatable>
      *
      * */
-    use HasFactory, Notifiable, SoftDeletes;
+    use HasFactory, Notifiable, SoftDeletes, TwoFactorAuthenticatable;
 
     /**
      * The attributes that are mass assignable.

@@ -36,8 +36,8 @@ class CreateNewUser implements CreatesNewUsers
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => $input['password'],
-            'tnc' => $input['tnc'] ?? true,
-            'send_updates' => $input['send_updates'] ?? true,
+            'tnc' => $input['tnc'] ? true : false,
+            'send_updates' => $input['send_updates'] ? true : false,
         ]);
     }
 }
