@@ -38,8 +38,6 @@
     --info-light: #38bdf8;
     --info-foreground: #ffffff;
 
-
-
     --popover: oklch(1 0 0);
     --popover-foreground: oklch(0.145 0 0);
 
@@ -83,7 +81,6 @@
 
     --info: #38bdf8;
     --info-light: #7dd3fc;
-
 
     --popover: oklch(0.145 0 0);
     --popover-foreground: oklch(0.985 0 0);

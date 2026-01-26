@@ -30,9 +30,9 @@ export function AppSidebar() {
                 <SidebarMenu>
                     <SidebarMenuItem>
                         <SidebarMenuButton
-                        size="lg" 
-                        asChild
-                        variant={"noHover"}
+                            size="lg"
+                            asChild
+                            variant={'noHover'}
                         >
                             <Link href={dashboard()} prefetch>
                                 <AppLogo />
