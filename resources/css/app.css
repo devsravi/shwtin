@@ -64,6 +64,9 @@
     --color-info-light: var(--info-light);
     --color-info-foreground: var(--info-foreground);
 
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+
     /* Borders & Inputs */
     --color-border: color-mix(in oklch, var(--foreground) 12%, transparent);
     --color-input: var(--background-soft);

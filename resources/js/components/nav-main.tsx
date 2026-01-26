@@ -23,8 +23,7 @@ export function NavMain({ items = [] }: { items: NavItem[] }) {
                                 resolveUrl(item.href),
                             )}
                             tooltip={{ children: item.title }}
-                            className="hover:bg-accent hover:text-accent-foreground focus:bg-accent"
-                        >
+                            >
                             <Link href={item.href} prefetch>
                                 {item.icon && <item.icon />}
                                 <span>{item.title}</span>
